@@ -1,0 +1,47 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner scan = new Scanner(System.in);
+		String alphabat = new String("abcdefghijklmnopqrstuvwxyz");
+		long primeN=1;
+		while(scan.hasNextLine()){
+		    String Nline = scan.nextLine();
+		    for(long i=0;i<Nline.length();i++){
+		        char alpha = Nline.charAt((int)i);
+		        if(alphabat.indexOf(alpha)!=-1){
+		        int printChar = alphabat.indexOf(alpha);
+		        primeN = prime(primeN);
+		        long asd = (int)printChar-primeN;
+		        while(asd<0){
+		            asd=asd+26;
+		        }
+		        System.out.print(alphabat.charAt((int)asd));
+		    }
+		    else{System.out.print(alpha);}
+		    }
+		    System.out.println();
+		}
+	}
+	public static long prime(long a){
+	    long newPrime = a+1;
+	    boolean flag = true;
+	    while(flag==true){
+	        boolean primeFlag = false;
+	        for(int i=2;i<newPrime;i++){
+	            if(newPrime%i==0){
+	                primeFlag=true;
+	                newPrime++;
+	                break;
+	            }
+	        }
+	        if(primeFlag==false){
+	            flag=false;
+	        }
+	    }
+	    return newPrime;
+	}
+}
